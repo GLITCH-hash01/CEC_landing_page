@@ -1,9 +1,9 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { BsChevronCompactLeft, BsChevronCompactRight,BsSquare,BsSquareFill } from 'react-icons/bs';
 import './index.css'
-// import App from './Components/App';
-
-// import { useState } from 'react';
+import App from './App';
+import { useState } from 'react';
 
 
 const slideimg=[
@@ -45,7 +45,6 @@ const jsxelement=(
             <h1 className=' text-xl'>College of Engineering</h1>
             <h1 className=' text-xl'>Chengannur</h1>
             <p className='font-light text-sm'>Managed by IHRD</p>
-
           </div>
           <div className='grow '></div>
           <img src="/src/assets/cec_logo_300.png" alt="logo" className='mr-[10px]' />
@@ -76,8 +75,8 @@ const jsxelement=(
 
 )
 
-ReactDOM.createRoot(document.getElementById('root')).render(jsxelement
-  // <React.StrictMode>
-  //   <App/>
-  // </React.StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App/>
+  </React.StrictMode>
 );
