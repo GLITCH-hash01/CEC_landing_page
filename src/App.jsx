@@ -3,6 +3,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight,BsSquare,BsSquareFill,BsIns
 import {BiMap} from 'react-icons/bi'
 import Card from './Components/Card.jsx'
 import Accordian from './Components/Accordian.jsx';
+import {AiFillMail, AiFillPhone} from 'react-icons/ai'
 
 
 
@@ -66,7 +67,7 @@ function App(){
 
           </div>
           <div className='grow '></div>
-          <nav className='flex flex-row self-center'>
+          <nav className='flex flex-row self-center p-4'>
             <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
               <BsInstagram  size={30}/>
               <a className='max-[500px]:hidden'>Instagram</a>
@@ -121,7 +122,7 @@ function App(){
       <div className='w-screen h-fit bg-[#dadfe3] text-black'>
         <div className='w-screen h-fit flex justify-center place-items-center '>
           <div className='w-[95%] h-[95%] bg-white px-4 my-4'>
-            <h1 className='text-xl p-3'>Departments</h1>
+            <h1 className='text-2xl p-3 font-semibold'>Departments</h1>
             <hr className='bg-slate-500 px-5'/>
             <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
               <Card/>
@@ -130,7 +131,7 @@ function App(){
               <Card/>
               <Card/>
             </div>
-            <h1 className='text-xl p-3'>Placements</h1>
+            <h1 className='text-2xl p-3 font-semibold'>Placements</h1>
             <hr className='bg-slate-500 px-5'/>
             <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
               <Card/>
@@ -139,7 +140,7 @@ function App(){
               <Card/>
               <Card/>
             </div>
-            <h1 className='text-xl p-3'>FAQ's</h1>
+            <h1 className='text-2xl p-3 font-semibold'>FAQ's</h1>
             <hr className='bg-slate-500 px-5'/>
             <div className=' justify-center py-2 flex flex-col gap-2'>
               <Accordian/>
@@ -147,9 +148,54 @@ function App(){
               <Accordian/>
               <Accordian/>
             </div>
+            <h1 className='text-2xl p-3 font-semibold '>Contact Us</h1>
+            <hr className='bg-slate-500 px-5'/>
+            <div className='  py-2 flex flex-row gap-2'>
+              <form action="" className='flex flex-col p-3 text-lg font-thin w-[50%] gap-1'>
+                <label htmlFor="">Name</label>
+                <input type="text" className='border border-[#5472d2] px-1'/>
+                <label htmlFor="">Email</label>
+                <input type="text" className='border border-[#5472d2] px-1'/>
+                <label htmlFor="">Query</label>
+                <textarea name="" id="" cols="30" rows="5" className='border border-[#5472d2] px-1'></textarea>
+                <button className='w-[130px] h-[55px] border border-[#5472d2] hover:bg-[#b21919] hover:border-white hover:text-white'>Contact us</button>
+
+              </form>
+
+            </div>
           </div>
         </div>
       </div>
+      <footer>
+        <div className='w-screen h-[200px] flex items-center bg-[#b21919] justify-center text-white text-sm'>
+          <div className='flex flex-row w-fit gap-10'>
+            <div className='flex flex-row '>
+              <div className='p-1'><BiMap/></div> 
+              <p className='mb-1'>College of Engineering Chengannur<br/>
+                Chengannur P.O. <br />
+                Alapuzha District <br />
+                Kerala <br /> 
+                PIN 689121</p>
+            </div>
+            <div className='flex flex-row'>
+              <div className='p-1'><AiFillPhone/></div>
+              <p>
+              +91-479- 2455125 (Reception) <br />
+              +91-479-2454125 (Office) <br />
+              +91-479-2451424 (Administrative officer) <br />
+              +91-479-2456046 (Principal) <br />
+              </p>
+            </div>
+            <div className='flex flex-row'>
+              <div className='p-1'><AiFillMail/></div>
+              <p>principal@ceconline.edu</p>
+            </div>
+            <img src="./src/assets/CEC-logo-white.png" alt=""  className=' h-[100px] w-[100px]'/>
+          </div>
+        </div>
+
+      </footer>
+
     </>
   
   )
