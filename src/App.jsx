@@ -34,6 +34,24 @@ function App(){
     }  
     
   ]
+
+  const companyicons=[
+    {
+      url:"./src/assets/Icons/TATA.jpg"
+    },
+    {
+      url:"./src/assets/Icons/TCS.png"
+    },
+    {
+      url:"./src/assets/Icons/Cognizant.webp"
+    },
+    {
+      url:"./src/assets/Icons/UST.png"
+    },
+    {
+      url:"./src/assets/Icons/Wipro.jpg"
+    }
+  ];
   
   const [currentIndex,setCurrentIndex]=useState(0);
   
@@ -133,12 +151,30 @@ function App(){
             </div>
             <h1 className='text-2xl p-3 font-semibold'>Placements</h1>
             <hr className='bg-slate-500 px-5'/>
-            <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
-              <Card/>
-              <Card/>
-              <Card/>
-              <Card/>
-              <Card/>
+            <div className='h-fit gap-24 py-2 w-full mx-1 flex flex-wrap justify-center'>
+              <div className='flex flex-col h-[150px] w-[fit] '>
+                <p className='text-6xl  w-full flex justify-center '>328</p>
+                <p>JOBS OFFERED</p>
+              </div>
+              <div className='flex flex-col h-[150px] w-[fit] '>
+                <p className='text-6xl  w-full flex justify-center '>178</p>
+                <p>STUDENTS PLACED</p>
+              </div>
+              <div className='flex flex-col h-[150px] w-[fit] '>
+                <p className='text-6xl  w-full flex justify-center '>27</p>
+                <p>STUDENTS PLACED</p>
+              </div>
+            </div>
+            <p  className='text-lg font-semibold'>Our Top Recruiters</p>
+            <div className='flex flex-row gap-2 '>{
+              companyicons.map((contntitem,contntindex)=>(
+
+                <div className='  w-[250px] h-[200px] bg-cover bg-center' style={{backgroundImage:`url(${companyicons[contntindex].url})`}} key={contntindex}>
+                </div>
+              ))
+
+              }
+
             </div>
             <h1 className='text-2xl p-3 font-semibold'>FAQ's</h1>
             <hr className='bg-slate-500 px-5'/>
