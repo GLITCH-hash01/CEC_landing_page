@@ -140,18 +140,22 @@ function App(){
       <div className='w-screen h-fit bg-[#dadfe3] text-black'>
         <div className='w-screen h-fit flex justify-center place-items-center '>
           <div className='w-[95%] h-[95%] bg-white px-4 my-4'>
-            <h1 className='text-2xl p-3 font-semibold'>Departments</h1>
-            <hr className='bg-slate-500 px-5'/>
-            <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
-              <Card/>
-              <Card/>
-              <Card/>
-              <Card/>
-              <Card/>
+            <div className='my-10'>
+              <h1 className='text-5xl p-3 font-semibold flex justify-center w-full'>Departments</h1>
+              {/* <hr className='bg-slate-500 px-5'/> */}
+              <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap m-5'>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+              </div>
             </div>
-            <h1 className='text-2xl p-3 font-semibold'>Placements</h1>
-            <hr className='bg-slate-500 px-5'/>
-            <div className='h-fit gap-24 py-2 w-full mx-1 flex flex-wrap justify-center'>
+
+            <div className='my-24'>
+            <h1 className='text-5xl p-3 font-semibold w-full flex justify-center'>Placements</h1>
+            {/* <hr className='bg-slate-500 px-5'/> */}
+            <div className='h-fit gap-24 py-2 w-full mx-1 flex flex-wrap justify-center m-5'>
               <div className='flex flex-col h-[150px] w-[fit] '>
                 <p className='text-6xl  w-full flex justify-center '>328</p>
                 <p>JOBS OFFERED</p>
@@ -165,8 +169,8 @@ function App(){
                 <p>STUDENTS PLACED</p>
               </div>
             </div>
-            <p  className='text-lg font-semibold'>Our Top Recruiters</p>
-            <div className='flex flex-row gap-2 '>{
+            <p  className='text-3xl font-semibold w-full flex justify-center '>Our Top Recruiters</p>
+            <div className='flex flex-row gap-2 justify-center'>{
               companyicons.map((contntitem,contntindex)=>(
 
                 <div className='  w-[fit] h-[fit] bg-cover bg-center flex items-center'  key={contntindex}>
@@ -177,17 +181,22 @@ function App(){
               }
 
             </div>
-            <h1 className='text-2xl p-3 font-semibold'>FAQ's</h1>
-            <hr className='bg-slate-500 px-5'/>
-            <div className=' justify-center py-2 flex flex-col gap-2'>
+            </div>
+            <div className='mt-32'>
+            <h1 className='text-5xl p-3 font-semibold w-full flex justify-center'>FAQ's</h1>
+            {/* <hr className='bg-slate-500 px-5'/> */}
+            <div className=' justify-center py-2 flex flex-col gap-2 '>
               <Accordian/>
               <Accordian/>
               <Accordian/>
               <Accordian/>
             </div>
-            <h1 className='text-2xl p-3 font-semibold '>Contact Us</h1>
-            <hr className='bg-slate-500 px-5'/>
-            <div className='  py-2 flex flex-row gap-2'>
+            </div>
+
+            <div className='m-10'>
+            <h1 className='text-4xl p-3 font-semibold flex justify-center'>Contact Us</h1>
+            {/* <hr className='bg-slate-500 px-5'/> */}
+            <div className='  py-2 flex flex-row gap-2 justify-center'>
               <form action="" className='flex flex-col p-3 text-lg font-thin w-[50%] gap-1'>
                 <label htmlFor="">Name</label>
                 <input type="text" className='border border-[#5472d2] px-1'/>
@@ -199,6 +208,7 @@ function App(){
 
               </form>
 
+            </div>
             </div>
           </div>
         </div>
