@@ -1,7 +1,9 @@
 import React,{useState} from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight,BsSquare,BsSquareFill,BsInstagram, BsLinkedin } from 'react-icons/bs';
 import {BiMap} from 'react-icons/bi'
-import {SliderContent} from './Components/sliderlayer.jsx'
+import Card from './Components/Card.jsx'
+import Accordian from './Components/Accordian.jsx';
+
 
 
 
@@ -12,13 +14,22 @@ import {SliderContent} from './Components/sliderlayer.jsx'
 function App(){
   const slideimg=[
     {
-      url:"/src/assets/slide-img-1.jpeg"
+      url:"/src/assets/slide-img-1.jpeg",
+      heading:"COLLEGE OF ENGINEERING CHENGANNUR",
+      Content:"The College of Engineering Chengannur (CEC), was established by the Government of Kerala under the aegis of the IHRD, in the year 1993. It has been approved by All India Council for Technical Education (AICTE) and affiliated to APJ Abdul Kalam Technological University (KTU). Ever since its inception, the college has maintained its eminence as a leading engineering college in Kerala. Being located in Chengannur town, Alleppey district the college has got access to all means of transport, communication and lodging facilities.",
+      ButtonName:"Contact Us"
     },
     {
-      url:"/src/assets/slide-img-2.png"
+      url:"/src/assets/slide-img-2.png",
+      heading:"PLACEMENTS",
+      Content:"",
+      ButtonName:"",
     },
     {
-      url:"/src/assets/slide-img-3.jpg"
+      url:"/src/assets/slide-img-3.jpg",
+      heading:"CODE CHN",
+      Content:"",
+      ButtonName:"",
     }  
     
   ]
@@ -47,9 +58,9 @@ function App(){
     <>
       <div className='w-screen h-screen '>
         <div className='w-screen h-[15%] flex flex-row shadow-lg max-[500px]:h-[10%]'>
-            <div className='flex flex-col p-2 '>
-              <h1 className=' text-xl'>College of Engineering</h1>
-              <h1 className=' text-xl'>Chengannur</h1>
+            <div className='flex flex-col p-2 font-bold text-2xl'>
+              <h1 className=' text-2xl'>College of Engineering</h1>
+              <h1 className=' text-2xl'>Chengannur</h1>
               <p className='font-light text-sm'>Managed by IHRD</p>
             </div>
             <div className='grow '></div>
@@ -62,12 +73,14 @@ function App(){
               <div className='flex flex-row grow h-full max-[500px]:flex-col'>
                 <div className='flex flex-col text-white w-[75%] max-[500px]:w-full'>
 
-                  <h2 className='text-white font-bold text-xl py-2 w-full'>COLLEGE OF ENGINEERING CHENGANNUR</h2>
-                  <p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full'>The College of Engineering Chengannur (CEC), was established by the Government of Kerala under the aegis of the IHRD, in the year 1993. It has been approved by All India Council for Technical Education (AICTE) and affiliated to APJ Abdul Kalam Technological University (KTU). Ever since its inception, the college has maintained its eminence as a leading engineering college in Kerala. Being located in Chengannur town, Alleppey district the college has got access to all means of transport, communication and lodging facilities.</p>
+                  <h2 className='text-white font-bold text-xl py-2 w-full'>{slideimg[currentIndex].heading}</h2>
+                  <p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full'>{slideimg[currentIndex].Content}</p>
 
                 </div>
-                <div className='h-full  w-[25%] justify-center flex max-[500px]:w-full'>
-                  <button className='border-2 border-white w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full'> Contact Us</button>
+                <div className='h-full  w-[25%] justify-center flex max-[500px]:w-full'>{
+                  (slideimg[currentIndex].ButtonName.length>0)? <button className='border-2 border-white w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full'> {slideimg[currentIndex].ButtonName}</button>: 0
+                }
+                  
 
                 </div>
               </div>
@@ -92,7 +105,7 @@ function App(){
             }
           </div>
         </div>
-        <nav className='bg-slate-700 w-screen h-[10%] flex items-center max-[500px]:h-[7%]'>
+        <nav className='bg-[#b21919] w-screen h-[10%] flex items-center max-[500px]:h-[7%]'>
         <div className='w-screen items-center px-5 flex flex-row gap-5
          text-white'>
 
@@ -112,7 +125,40 @@ function App(){
         </div>
         </nav>
         </div>
-        <div className='w-screen h-screen bg-white flex flex-row gap-2'></div>
+        <div className='w-screen h-fit bg-[#dadfe3] text-black'>
+          <div className='w-screen h-fit flex justify-center place-items-center '>
+            <div className='w-[95%] h-[95%] bg-white px-4 my-4'>
+              <h1 className='text-xl p-3'>Departments</h1>
+              <hr className='bg-slate-500 px-5'/>
+              <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+              </div>
+              <h1 className='text-xl p-3'>Placements</h1>
+              <hr className='bg-slate-500 px-5'/>
+              <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+              </div>
+              <h1 className='text-xl p-3'>FAQ's</h1>
+              <hr className='bg-slate-500 px-5'/>
+              <div className=' justify-center py-2 flex flex-col gap-2'>
+                <Accordian/>
+                <Accordian/>
+                <Accordian/>
+                <Accordian/>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
     </>
   
   )
