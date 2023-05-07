@@ -169,7 +169,8 @@ function App(){
             <div className='flex flex-row gap-2 '>{
               companyicons.map((contntitem,contntindex)=>(
 
-                <div className='  w-[250px] h-[200px] bg-cover bg-center' style={{backgroundImage:`url(${companyicons[contntindex].url})`}} key={contntindex}>
+                <div className='  w-[fit] h-[fit] bg-cover bg-center flex items-center'  key={contntindex}>
+                  <img src={`${companyicons[contntindex].url}`} ></img>
                 </div>
               ))
 
