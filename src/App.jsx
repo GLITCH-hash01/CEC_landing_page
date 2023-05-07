@@ -63,8 +63,17 @@ function App(){
             <h1 className=' text-2xl'>College of Engineering</h1>
             <h1 className=' text-2xl'>Chengannur</h1>
             <p className='font-light text-sm'>Managed by IHRD</p>
+
           </div>
           <div className='grow '></div>
+          <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-600 p-3 rounded-xl'>
+            <BsInstagram  size={30}/>
+            <a className='max-[500px]:hidden'>Instagram</a>
+          </div>
+          <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-600 p-3 rounded-xl'>
+            <BsLinkedin size={30}/>
+            <a className='max-[500px]:hidden'>LinkedIn</a>
+          </div>
         </div>
         <div className='w-screen h-[75%] bg-bottom bg-cover relative group transition-all duration-200 max-[500px]:h-[83%]' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
           <div className='absolute bg-gradient-to-t from-black w-full h-full'></div>
