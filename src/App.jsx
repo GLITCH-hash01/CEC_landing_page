@@ -58,13 +58,13 @@ function App(){
     <>
       <div className='w-screen h-screen '>
         <div className='w-screen h-[15%] flex flex-row shadow-lg max-[500px]:h-[10%]'>
-            <div className='flex flex-col p-2 font-bold text-2xl'>
-              <h1 className=' text-2xl'>College of Engineering</h1>
-              <h1 className=' text-2xl'>Chengannur</h1>
-              <p className='font-light text-sm'>Managed by IHRD</p>
-            </div>
-            <div className='grow '></div>
-            <img src="/src/assets/cec_logo_300.png" alt="logo" className='mr-[10px]' />
+          <img src="/src/assets/cec_logo_300.png" alt="logo" className='mr-[10px]' />
+          <div className='flex flex-col p-2 font-bold text-2xl'>
+            <h1 className=' text-2xl'>College of Engineering</h1>
+            <h1 className=' text-2xl'>Chengannur</h1>
+            <p className='font-light text-sm'>Managed by IHRD</p>
+          </div>
+          <div className='grow '></div>
         </div>
         <div className='w-screen h-[75%] bg-bottom bg-cover relative group transition-all duration-200 max-[500px]:h-[83%]' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
           <div className='absolute bg-gradient-to-t from-black w-full h-full'></div>
@@ -124,41 +124,39 @@ function App(){
           </div>
         </div>
         </nav>
-        </div>
-        <div className='w-screen h-fit bg-[#dadfe3] text-black'>
-          <div className='w-screen h-fit flex justify-center place-items-center '>
-            <div className='w-[95%] h-[95%] bg-white px-4 my-4'>
-              <h1 className='text-xl p-3'>Departments</h1>
-              <hr className='bg-slate-500 px-5'/>
-              <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-              </div>
-              <h1 className='text-xl p-3'>Placements</h1>
-              <hr className='bg-slate-500 px-5'/>
-              <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-              </div>
-              <h1 className='text-xl p-3'>FAQ's</h1>
-              <hr className='bg-slate-500 px-5'/>
-              <div className=' justify-center py-2 flex flex-col gap-2'>
-                <Accordian/>
-                <Accordian/>
-                <Accordian/>
-                <Accordian/>
-              </div>
-
+      </div>
+      <div className='w-screen h-fit bg-[#dadfe3] text-black'>
+        <div className='w-screen h-fit flex justify-center place-items-center '>
+          <div className='w-[95%] h-[95%] bg-white px-4 my-4'>
+            <h1 className='text-xl p-3'>Departments</h1>
+            <hr className='bg-slate-500 px-5'/>
+            <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
+              <Card/>
+              <Card/>
+              <Card/>
+              <Card/>
+              <Card/>
             </div>
-
+            <h1 className='text-xl p-3'>Placements</h1>
+            <hr className='bg-slate-500 px-5'/>
+            <div className='h-fit gap-2 py-2 w-full mx-1 flex flex-wrap'>
+              <Card/>
+              <Card/>
+              <Card/>
+              <Card/>
+              <Card/>
+            </div>
+            <h1 className='text-xl p-3'>FAQ's</h1>
+            <hr className='bg-slate-500 px-5'/>
+            <div className=' justify-center py-2 flex flex-col gap-2'>
+              <Accordian/>
+              <Accordian/>
+              <Accordian/>
+              <Accordian/>
+            </div>
           </div>
         </div>
+      </div>
     </>
   
   )
