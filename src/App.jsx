@@ -66,16 +66,18 @@ function App(){
 
           </div>
           <div className='grow '></div>
-          <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-600 p-3 rounded-xl'>
-            <BsInstagram  size={30}/>
-            <a className='max-[500px]:hidden'>Instagram</a>
-          </div>
-          <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-600 p-3 rounded-xl'>
-            <BsLinkedin size={30}/>
-            <a className='max-[500px]:hidden'>LinkedIn</a>
-          </div>
+          <nav className='flex flex-row self-center'>
+            <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
+              <BsInstagram  size={30}/>
+              <a className='max-[500px]:hidden'>Instagram</a>
+            </div>
+            <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
+              <BsLinkedin size={30}/>
+              <a className='max-[500px]:hidden'>LinkedIn</a>
+            </div>
+          </nav>
         </div>
-        <div className='w-screen h-[75%] bg-bottom bg-cover relative group transition-all duration-200 max-[500px]:h-[83%]' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
+        <div className='w-screen h-[85%] bg-bottom bg-cover relative group transition-all duration-200 max-[500px]:h-[83%]' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
           <div className='absolute bg-gradient-to-t from-black w-full h-full'></div>
           <div className='h-full w-full flex flex-col-reverse'>
             <div className='z-50 p-12'>
@@ -103,7 +105,7 @@ function App(){
           <div className='absolute w-fit h-fit text-white bottom-[50%] right-0 hidden group-hover:block cursor-pointer max-[500px]:block '>
             <BsChevronCompactRight onClick={nextSlide} size={80}/>
           </div>
-          <div className='transition-all ease-in absolute -300 w-screen h-fit bottom-0 justify-center py-3 gap-4 cursor-pointer hidden group-hover:flex z-50 max-[500px]:flex'>
+          <div className='transition-all ease-in absolute  w-screen h-fit bottom-0 justify-center py-3 gap-4 cursor-pointer hidden group-hover:flex z-50 max-[500px]:flex'>
             {
               slideimg.map((slideimg,slideindex)=>(
                 <div key={slideindex}>
@@ -114,25 +116,7 @@ function App(){
             }
           </div>
         </div>
-        <nav className='bg-[#b21919] w-screen h-[10%] flex items-center max-[500px]:h-[7%]'>
-        <div className='w-screen items-center px-5 flex flex-row gap-5
-         text-white'>
-
-          <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-600 p-3 rounded-xl'>
-            <BsInstagram color='white' size={30}/>
-            <a className='max-[500px]:hidden'>Instagram</a>
-          </div>
-          <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-600 p-3 rounded-xl'>
-            <BsLinkedin size={30}/>
-            <a className='max-[500px]:hidden'>LinkedIn</a>
-          </div>
-          <div className='grow'></div>
-          <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-600 p-3 rounded-xl'>
-            <BiMap size={35}/>
-            <a className='max-[500px]:hidden'>Google Maps</a>
-          </div>
-        </div>
-        </nav>
+        
       </div>
       <div className='w-screen h-fit bg-[#dadfe3] text-black'>
         <div className='w-screen h-fit flex justify-center place-items-center '>
