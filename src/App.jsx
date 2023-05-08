@@ -56,6 +56,9 @@ function App(){
   
   const [currentIndex,setCurrentIndex]=useState(0);
   const isMobile=useMediaQuery({query:'(max-width:600px)'})
+  const isRotatedMobileHeight=useMediaQuery({query:'(max-height:365px)'})
+  const isRotatedMobiileWidth=useMediaQuery({query:'(max-width:885px)'});
+
  
   const prevSlide=() =>{
     const isFirstSlide=(currentIndex==0);
@@ -76,9 +79,9 @@ function App(){
   console.log(isMobile)
   const jsxelement=(
     <>
-      <div className='w-screen h-screen '>
-        <div className='w-screen h-[15%] flex flex-row shadow-lg max-[500px]:h-[13%]'>
-          <img src={isMobile? "/src/assets/cec_logo_100.png":"/src/assets/cec_logo_300.png"} alt="logo" className='mr-[10px] max-[600px]:w-[100px] max-[600px]:h-[100px]' />
+      <div className='w-screen h-screen flex flex-col grow overflow-auto'>
+        <div className='w-screen h-[fit] flex flex-row shadow-lg max-[500px]:h-[13%]'>
+          <img src={isMobile? "/src/assets/cec_logo_100.png":"/src/assets/cec_logo_300.png"} alt="logo" className='mr-[10px] max-[600px]:w-[100px] max-[600px]:h-[100px] h-[100px] w-[100px]' />
           <div className='flex flex-col p2 font-bold text-2xl max-[600px]:p-0'>
             <h1 className=' text-2xl max-[600px]:text-lg'>College of Engineering</h1>
             <h1 className=' text-2xl max-[600px]:text-lg'>Chengannur</h1>
@@ -97,7 +100,7 @@ function App(){
             </div>
           </nav>
         </div>
-        <div className='w-screen h-[85%] bg-bottom bg-cover relative group transition-all duration-200 max-[500px]:h-[87%]' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
+        <div className='w-screen h-full bg-bottom bg-cover relative group transition-all duration-200 max-[500px]:h-[87%]' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
           <div className='absolute bg-gradient-to-t from-black w-full h-full'></div>
           <div className='h-full w-full flex flex-col-reverse'>
             <div className='z-50 p-12'>
@@ -105,7 +108,7 @@ function App(){
                 <div className='flex flex-col text-white w-[75%] max-[500px]:w-full'>
 
                   <h2 className='text-white font-bold text-xl py-2 w-full'>{slideimg[currentIndex].heading}</h2>
-                  {(slideimg[currentIndex].Content.length>0)&&<p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full'>{slideimg[currentIndex].Content}</p>}
+                  {((slideimg[currentIndex].Content.length>0)&&(!isRotatedMobileHeight))&&<p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full'>{slideimg[currentIndex].Content}</p>}
 
                 </div>
                 <div className='h-full  w-[25%] justify-center flex max-[500px]:w-full'>{
@@ -119,11 +122,11 @@ function App(){
             
             
           </div>
-          <div className='absolute w-fit h-fit text-white bottom-[50%] left-0 hidden group-hover:block cursor-pointer max-[500px]:block '>
-            <BsChevronCompactLeft onClick={prevSlide} size={80} />
+          <div className='absolute w-fit h-fit text-white bottom-[50%] left-0 hidden group-hover:block cursor-pointer max-[500px]:block z-50'>
+            <BsChevronCompactLeft onClick={prevSlide} size={isMobile? 30:80} />
           </div>
-          <div className='absolute w-fit h-fit text-white bottom-[50%] right-0 hidden group-hover:block cursor-pointer max-[500px]:block '>
-            <BsChevronCompactRight onClick={nextSlide} size={80}/>
+          <div className='absolute w-fit h-fit text-white bottom-[50%] right-0 hidden group-hover:block cursor-pointer max-[500px]:block z-50'>
+            <BsChevronCompactRight onClick={nextSlide} size={isMobile? 30:80}/>
           </div>
           <div className='transition-all ease-in absolute  w-screen h-fit bottom-0 justify-center py-3 gap-4 cursor-pointer hidden group-hover:flex z-50 max-[500px]:flex'>
             {
@@ -193,7 +196,7 @@ function App(){
             <div className='mt-32'>
             <h1 className='text-5xl p-3 font-semibold w-full flex justify-center'>FAQ's</h1>
             {/* <hr className='bg-slate-500 px-5'/> */}
-            <div className=' justify-center py-2 flex flex-col gap-2 '>
+            <div className=' justify-center py-2 flex flex-col gap-2 w-full items-center'>
               <Accordian/>
               <Accordian/>
               <Accordian/>
@@ -241,6 +244,7 @@ function App(){
               +91-479-2456046 (Principal) <br />
               </p>
             </div>
+            <div className='flex flex-wrap gap-5'>
             <div className='flex flex-row'>
               <div className='p-1'><AiFillMail/></div>
               <p>principal@ceconline.edu</p>
@@ -248,7 +252,7 @@ function App(){
             <div className='h-fit w-fit max-[600px]:justify-center flex max-[600px]:w-full'>
               <img src="./src/assets/CEC-logo-white.png" alt=""  className=' h-[100px] w-[100px]'/>
             </div>
-            
+            </div>
           </div>
         </div>
 
