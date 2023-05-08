@@ -79,6 +79,7 @@ function App(){
   console.log(isMobile)
   const jsxelement=(
     <>
+      <link rel="preload" as='image' href="/src/assets/slide-img-2.png" />
       <div className='w-screen h-screen flex flex-col grow overflow-auto'>
         <div className='w-screen h-[fit] flex flex-row shadow-lg max-[500px]:h-[13%]'>
           <img src={isMobile? "/src/assets/cec_logo_100.png":"/src/assets/cec_logo_300.png"} alt="logo" className='mr-[10px] max-[600px]:w-[100px] max-[600px]:h-[100px] h-[100px] w-[100px]' />
@@ -108,7 +109,7 @@ function App(){
                 <div className='flex flex-col text-white w-[75%] max-[500px]:w-full'>
 
                   <h2 className='text-white font-bold text-xl py-2 w-full'>{slideimg[currentIndex].heading}</h2>
-                  {((slideimg[currentIndex].Content.length>0)&&(!isRotatedMobileHeight))&&<p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full'>{slideimg[currentIndex].Content}</p>}
+                  {((slideimg[currentIndex].Content.length>0)&&(!isRotatedMobileHeight))&&<p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full text-ellipsis'>{slideimg[currentIndex].Content}</p>}
 
                 </div>
                 <div className='h-full  w-[25%] justify-center flex max-[500px]:w-full'>{
