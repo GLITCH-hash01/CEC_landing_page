@@ -12,11 +12,11 @@ function Accordian(){
                 <p className={'self-center text-3xl duration-300  '+(isActive? 'rotate-45':'')}  >+</p>
             </div>
             
-            {isActive && 
-            <div className='h-fit p-2 bg-[#647fd6] duration-1000 transition-transform ease-in-out w-full text-white'>
+            
+            <div className={`${isActive? "h-fit p-2":"h-0"} bg-[#647fd6] duration-100 transition-all  w-full text-white`}>
                 <p>The college has many organizations like IEEE,NSS,NCC Naval Unit etc</p>
             </div> 
-            }
+            
             
         </div>
         </>

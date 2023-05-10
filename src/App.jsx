@@ -87,8 +87,8 @@ function App(){
   const jsxelement=(
     <>
       <link rel="preload" as='image' href="/src/assets/slide-img-2.png" />
-      <div className='w-screen h-screen flex flex-col grow overflow-auto'>
-        <div className='w-screen h-[fit] flex flex-row shadow-lg max-[500px]:h-[13%]'>
+      <div className='w-screen h-screen flex flex-col grow overflow-clip'>
+        <div className='w-screen h-[fit] flex flex-row shadow-lg '>
           <img src={isMobile? "/src/assets/cec_logo_100.png":"/src/assets/cec_logo_300.png"} alt="logo" className='mr-[10px] max-[600px]:w-[100px] max-[600px]:h-[100px] h-[100px] w-[100px]' />
           <div className='flex flex-col p2 font-bold text-2xl max-[600px]:p-0'>
             <h1 className=' text-2xl max-[600px]:text-lg'>College of Engineering</h1>
@@ -112,7 +112,7 @@ function App(){
             </div>
           </nav>
         </div>
-        <div className='w-screen h-full bg-bottom bg-cover relative group transition-all duration-200 max-[500px]:h-[87%]' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
+        <div className='w-screen h-full bg-bottom bg-cover relative group transition-all duration-200 ' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
           <div className='absolute bg-gradient-to-t from-black w-full h-full'></div>
           <div className='h-full w-full flex flex-col-reverse'>
             <div className='z-50 p-12'>
@@ -164,7 +164,7 @@ function App(){
             <div className='my-14'>
             <h1 className='text-5xl p-3 font-semibold w-full flex justify-center'>Placements</h1>
             {/* <hr className='bg-slate-500 px-5'/> */}
-            <div className='flex justify-center overflow-auto'>
+            <div className='flex overflow-auto lg:justify-center md:justify-center'>
               <PlacementGraph/>
             </div>
             <div className='h-fit gap-24 py-2 w-full mx-1 flex flex-wrap justify-center m-5 max-[600px]:gap-14'>
@@ -184,7 +184,7 @@ function App(){
             <p  className='text-3xl font-semibold w-full flex justify-center max-[600px]:text-4xl max-[600px]:my-11 '>Our Top Recruiters</p>
             <div className='flex flex-wrap gap-3 justify-center min-[1400px]:place-content-center min-[1400px]:h-[250px]'>{
               companyicons.map((contntitem,contntindex)=>(
-              <div className='group  duration-100 delay-75 flex flex-col place-content-center  cursor-pointer hover:shadow-xl hover:scale-125 '>
+              <div className='group  duration-100 delay-75 flex flex-col place-content-center  cursor-pointer hover:shadow-xl hover:scale-125 hover:bg-white'>
                 <div className=' w-[full] h-[full]  flex items-center border-black  grow'  key={contntindex}>
                   <img src={`${companyicons[contntindex].url}`} ></img>
                 </div>
