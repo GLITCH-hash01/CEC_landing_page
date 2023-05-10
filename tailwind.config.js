@@ -4,7 +4,11 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}",
 ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        'CSE':'url(public/src/assets/Card_1.jpeg)'
+      }
+    },
   },
   plugins: [],
 }

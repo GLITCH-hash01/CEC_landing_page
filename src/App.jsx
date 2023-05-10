@@ -1,11 +1,11 @@
 import React,{useDebugValue, useState} from 'react';
-import { BsChevronCompactLeft, BsChevronCompactRight,BsSquare,BsSquareFill,BsInstagram, BsLinkedin } from 'react-icons/bs';
+import { BsChevronCompactLeft, BsChevronCompactRight,BsSquare,BsSquareFill,BsInstagram, BsLinkedin,BsFacebook } from 'react-icons/bs';
 import {BiMap} from 'react-icons/bi'
-import Card from './Components/Card.jsx'
+import CourseSection from './Components/Corsesection.jsx'
 import Accordian from './Components/Accordian.jsx';
 import {AiFillMail, AiFillPhone} from 'react-icons/ai';
 import {useMediaQuery} from 'react-responsive';
-
+import PlacementGraph from './Components/Graph.jsx'
 
 
 
@@ -25,34 +25,41 @@ function App(){
       url:"/src/assets/slide-img-2.png",
       heading:"PLACEMENTS",
       Content:"",
-      ButtonName:"",
+      ButtonName:"Contact Us",
     },
     {
       url:"/src/assets/slide-img-3.jpg",
       heading:"CODE CHN",
       Content:"",
-      ButtonName:"",
+      ButtonName:"Contact Us",
     }  
     
   ]
 
   const companyicons=[
     {
-      url:"./src/assets/Icons/TATA.jpg"
+      url:"./src/assets/Icons/TCS.png",
+      placed:'41'
     },
     {
-      url:"./src/assets/Icons/TCS.png"
+      url:"./src/assets/Icons/TATA.png",
+      placed:'30'
     },
     {
-      url:"./src/assets/Icons/Cognizant.webp"
+      url:"./src/assets/Icons/Cognizant.png",
+      placed:'29'
     },
     {
-      url:"./src/assets/Icons/UST.png"
+      url:"./src/assets/Icons/Wipro.png",
+      placed:'24'
     },
     {
-      url:"./src/assets/Icons/Wipro.jpg"
+      url:"./src/assets/Icons/UST.png",
+      placed:'20'
     }
   ];
+
+
   
   const [currentIndex,setCurrentIndex]=useState(0);
   const isMobile=useMediaQuery({query:'(max-width:600px)'})
@@ -92,12 +99,16 @@ function App(){
           <div className='grow '></div>
           <nav className='flex flex-row self-center p-4'>
             <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
-              <BsInstagram  size={30}/>
+              <BsInstagram  size={20}/>
               <a className='max-[500px]:hidden'>Instagram</a>
             </div>
             <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
-              <BsLinkedin size={30}/>
+              <BsLinkedin size={20}/>
               <a className='max-[500px]:hidden'>LinkedIn</a>
+            </div>
+            <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
+              <BsFacebook size={20}/>
+              <a className='max-[750px]:hidden'>Facebook</a>
             </div>
           </nav>
         </div>
@@ -113,15 +124,11 @@ function App(){
 
                 </div>
                 <div className='h-full  w-[25%] justify-center flex max-[500px]:w-full'>{
-                  (slideimg[currentIndex].ButtonName.length>0)? <button className='border-2 border-white w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full'> {slideimg[currentIndex].ButtonName}</button>: 0
+                  (slideimg[currentIndex].ButtonName.length>0)? <button className='  w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full bg-[#b21919]'> {slideimg[currentIndex].ButtonName}</button>: 0
                 }
-                  
-
                 </div>
               </div>
             </div>
-            
-            
           </div>
           <div className='absolute w-fit h-fit text-white bottom-[50%] left-0 hidden group-hover:block cursor-pointer max-[500px]:block z-50'>
             <BsChevronCompactLeft onClick={prevSlide} size={isMobile? 30:80} />
@@ -145,48 +152,45 @@ function App(){
       <div className='w-screen h-fit bg-[#dadfe3] text-black'>
         <div className='w-screen h-fit flex justify-center place-items-center '>
           <div className='w-[95%] h-[95%] bg-white px-4 my-4'>
-            <div className='my-10'>
+            <div className='my-8'>
               <h1 className='text-5xl p-3 font-semibold flex justify-center w-full'>Courses</h1>
               {/* <hr className='bg-slate-500 px-5'/> */}
-              <div className='h-fit gap-24 py-2 w-full mx-1 flex flex-wrap m-5 justify-center'>
-                <div className='flex flex-col'>
-                  <p className='text-4xl flex justify-center'>CSE</p>
-                  <p>Computer Science Engineering</p>
-                </div>
-                <div className='flex flex-col'>
-                  <p className='text-4xl flex justify-center'>ECE</p>
-                  <p>Computer Science Engineering</p>
-                </div>
-                <div className='flex flex-col'>
-                  <p className='text-4xl flex justify-center'>CSE</p>
-                  <p>Computer Science Engineering</p>
-                </div>
-              </div>
+
+                <CourseSection/>
+
+
             </div>
 
-            <div className='my-24'>
+            <div className='my-14'>
             <h1 className='text-5xl p-3 font-semibold w-full flex justify-center'>Placements</h1>
             {/* <hr className='bg-slate-500 px-5'/> */}
+            <div className='flex justify-center overflow-auto'>
+              <PlacementGraph/>
+            </div>
             <div className='h-fit gap-24 py-2 w-full mx-1 flex flex-wrap justify-center m-5 max-[600px]:gap-14'>
               <div className='flex flex-col h-[150px] w-[fit] '>
-                <p className='text-6xl  w-full flex justify-center '>328</p>
+                <p className='text-6xl  w-full flex justify-center text-[#8c1515]'>328</p>
                 <p>JOBS OFFERED</p>
               </div>
               <div className='flex flex-col h-[150px] w-[fit] '>
-                <p className='text-6xl  w-full flex justify-center '>178</p>
+                <p className='text-6xl  w-full flex justify-center text-[#8c1515]'>178</p>
                 <p>STUDENTS PLACED</p>
               </div>
               <div className='flex flex-col h-[150px] w-[fit] '>
-                <p className='text-6xl  w-full flex justify-center '>27</p>
+                <p className='text-6xl  w-full flex justify-center text-[#8c1515]'>27</p>
                 <p>STUDENTS PLACED</p>
               </div>
             </div>
-            <p  className='text-3xl font-semibold w-full flex justify-center max-[600px]:text-4xl max-[600px]:my-11'>Our Top Recruiters</p>
-            <div className='flex flex-wrap gap-2 justify-center'>{
+            <p  className='text-3xl font-semibold w-full flex justify-center max-[600px]:text-4xl max-[600px]:my-11 '>Our Top Recruiters</p>
+            <div className='flex flex-wrap gap-3 justify-center min-[1400px]:place-content-center min-[1400px]:h-[250px]'>{
               companyicons.map((contntitem,contntindex)=>(
-
-                <div className='  w-[fit] h-[fit]  flex items-center'  key={contntindex}>
+              <div className='group  duration-100 delay-75 flex flex-col place-content-center  cursor-pointer hover:shadow-xl hover:scale-125 '>
+                <div className=' w-[full] h-[full]  flex items-center border-black  grow'  key={contntindex}>
                   <img src={`${companyicons[contntindex].url}`} ></img>
+                </div>
+                <div className='group-hover:flex hidden justify-center'>
+                 <p className='font-semibold'>{`${companyicons[contntindex].placed}`} <span className='font-light'>Placed</span> </p>
+                </div>
                 </div>
               ))
 

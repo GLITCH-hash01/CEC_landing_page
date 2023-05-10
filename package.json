@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "apexcharts": "^3.40.0",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
-    "react-responsive": "^9.0.2"
+    "react-responsive": "^9.0.2",
+    "recharts": "^2.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
