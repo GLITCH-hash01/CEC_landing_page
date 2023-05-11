@@ -18,19 +18,19 @@ function App(){
     {
       url:"/src/assets/slide-img-1.jpeg",
       heading:"COLLEGE OF ENGINEERING CHENGANNUR",
-      Content:"The College of Engineering Chengannur (CEC), was established by the Government of Kerala under the aegis of the IHRD, in the year 1993. It has been approved by All India Council for Technical Education (AICTE) and affiliated to APJ Abdul Kalam Technological University (KTU). Ever since its inception, the college has maintained its eminence as a leading engineering college in Kerala. Being located in Chengannur town, Alleppey district the college has got access to all means of transport, communication and lodging facilities.",
+      Content:"Join the College of Engineering Chengannur and become a pioneering engineer. Our highly qualified faculty and recognized programs under AICTE and KTU provide the discipline and education needed to excel in professional environments. Choose from a range of undergraduate and postgraduate programs in engineering, as well as an MBA program. Join us today and become a successful engineer and professional.",
       ButtonName:"Contact Us"
     },
     {
       url:"/src/assets/slide-img-2.png",
       heading:"PLACEMENTS",
-      Content:"",
+      Content:"The College of Engineering Chengannur's Training and Placement Cell (TPC) comprises active student members guided by a Staff-in-Charge. The TPC focuses on developing students' personalities and establishing their careers by providing training programs, including group discussions, mock interviews, and behavior and body language basics. TPC assists students with career planning, employment, and information on higher studies. Companies are invited to the campus for recruiting students, and the TPC offers all facilities for conducting presentations, tests, and interviews.",
       ButtonName:"Contact Us",
     },
     {
-      url:"/src/assets/slide-img-3.jpg",
-      heading:"CODE CHN",
-      Content:"",
+      url:"/src/assets/slide-img-4.png",
+      heading:"IHRD THARANG",
+      Content:" A National Level Techno-Cultural-Entrepreneurial event organized by IHRD. The 6-day event had 60,000 participants and included workshops, competitions, and job fairs. It featured 85 stalls and cultural programs by celebrities like Jassie Gift, Navya Nair, and Sithara Krishnakumar.",
       ButtonName:"Contact Us",
     }  
     
@@ -90,34 +90,35 @@ function App(){
       <div className='w-screen h-screen flex flex-col grow overflow-clip'>
         <div className='w-screen h-[fit] flex flex-row shadow-lg '>
           <img src={isMobile? "/src/assets/cec_logo_100.png":"/src/assets/cec_logo_300.png"} alt="logo" className='mr-[10px] max-[600px]:w-[100px] max-[600px]:h-[100px] h-[100px] w-[100px]' />
-          <div className='flex flex-col p2 font-bold text-2xl max-[600px]:p-0'>
+          <div className='flex flex-col p2 font-bold text-2xl max-[600px]:p-0 '>
             <h1 className=' text-2xl max-[600px]:text-lg'>College of Engineering</h1>
             <h1 className=' text-2xl max-[600px]:text-lg'>Chengannur</h1>
             <p className='font-light text-sm max-[600px]:text-xs'>Managed by IHRD</p>
 
           </div>
           <div className='grow '></div>
-          <nav className='flex flex-row self-center p-4'>
-            <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
+          <nav className='flex flex-row self-center p-4'>              
+          <a href="https://www.instagram.com/cec_chengannur/" className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
               <BsInstagram  size={20}/>
               <a className='max-[500px]:hidden'>Instagram</a>
-            </div>
-            <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
+            </a>
+
+            <a className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl' href="https://www.linkedin.com/school/college-of-engineering-chengannur/"> 
               <BsLinkedin size={20}/>
               <a className='max-[500px]:hidden'>LinkedIn</a>
-            </div>
-            <div className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl'>
+            </a>
+            <a className='flex flex-row gap-3 cursor-pointer hover:bg-gray-300 p-3 rounded-xl ' href='https://www.facebook.com/CEConline/'>
               <BsFacebook size={20}/>
               <a className='max-[750px]:hidden'>Facebook</a>
-            </div>
+            </a>
           </nav>
         </div>
-        <div className='w-screen h-full bg-bottom bg-cover relative group transition-all duration-200 ' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
+        <div className='w-screen h-full bg-center bg-cover relative group transition-all duration-200' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
           <div className='absolute bg-gradient-to-t from-black w-full h-full'></div>
           <div className='h-full w-full flex flex-col-reverse'>
             <div className='z-50 p-12'>
               <div className='flex flex-row grow h-full max-[500px]:flex-col'>
-                <div className='flex flex-col text-white w-[75%] max-[500px]:w-full'>
+                <div className='flex flex-col text-white w-[75%] max-[500px]:w-full lg:p-10 md:p-10  '>
 
                   <h2 className='text-white font-bold text-xl py-2 w-full'>{slideimg[currentIndex].heading}</h2>
                   {((slideimg[currentIndex].Content.length>0)&&(!isRotatedMobileHeight))&&<p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full text-ellipsis'>{slideimg[currentIndex].Content}</p>}
@@ -202,10 +203,10 @@ function App(){
             <h1 className='text-5xl p-3 font-semibold w-full flex justify-center'>FAQ's</h1>
             {/* <hr className='bg-slate-500 px-5'/> */}
             <div className=' justify-center py-2 flex flex-col gap-2 w-full items-center'>
-              <Accordian/>
-              <Accordian/>
-              <Accordian/>
-              <Accordian/>
+              <Accordian indexnumber={0}/>
+              <Accordian indexnumber={1}/>
+              <Accordian indexnumber={2}/>
+              <Accordian indexnumber={3}/>
             </div>
             </div>
 
