@@ -5,7 +5,8 @@ import CourseSection from './Components/Corsesection.jsx'
 import Accordian from './Components/Accordian.jsx';
 import {AiFillMail, AiFillPhone} from 'react-icons/ai';
 import {useMediaQuery} from 'react-responsive';
-import PlacementGraph from './Components/Graph.jsx'
+import PlacementGraph from './Components/Graph.jsx';
+import CarouselPanel from './Components/Carouselpanel.jsx';
 
 
 
@@ -39,26 +40,26 @@ function App(){
   const companyicons=[
     {
       url:"./src/assets/Icons/TCS.png",
-      placed:'41'
+      information:'41'
     },
     {
       url:"./src/assets/Icons/TATA.png",
-      placed:'30'
+      information:'30'
     },
     {
       url:"./src/assets/Icons/Cognizant.png",
-      placed:'29'
+      information:'29'
     },
     {
       url:"./src/assets/Icons/Wipro.png",
-      placed:'24'
+      information:'24'
     },
     {
       url:"./src/assets/Icons/UST.png",
-      placed:'20'
+      information:'20'
     }
   ];
-
+  
 
   
   const [currentIndex,setCurrentIndex]=useState(0);
@@ -82,7 +83,7 @@ function App(){
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-  
+
   console.log(isMobile)
   const jsxelement=(
     <>
@@ -112,42 +113,11 @@ function App(){
               <a className='max-[750px]:hidden'>Facebook</a>
             </a>
           </nav>
-        </div>
-        <div className='w-screen h-full bg-center bg-cover relative group transition-all duration-200' style={{backgroundImage:`url(${slideimg[currentIndex].url})`}}>
-          <div className='absolute bg-gradient-to-t from-black w-full h-full'></div>
-          <div className='h-full w-full flex flex-col-reverse'>
-            <div className='z-50 p-12'>
-              <div className='flex flex-row grow h-full max-[500px]:flex-col'>
-                <div className='flex flex-col text-white w-[75%] max-[500px]:w-full lg:p-10 md:p-10  '>
+          
+        
 
-                  <h2 className='text-white font-bold text-xl py-2 w-full'>{slideimg[currentIndex].heading}</h2>
-                  {((slideimg[currentIndex].Content.length>0)&&(!isRotatedMobileHeight))&&<p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full text-ellipsis'>{slideimg[currentIndex].Content}</p>}
-
-                </div>
-                <div className='h-full  w-[25%] justify-center flex max-[500px]:w-full'>{
-                  (slideimg[currentIndex].ButtonName.length>0)? <button className='  w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full bg-[#b21919]'> {slideimg[currentIndex].ButtonName}</button>: 0
-                }
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='absolute w-fit h-fit text-white bottom-[50%] left-0 hidden group-hover:block cursor-pointer max-[500px]:block z-50'>
-            <BsChevronCompactLeft onClick={prevSlide} size={isMobile? 30:80} />
-          </div>
-          <div className='absolute w-fit h-fit text-white bottom-[50%] right-0 hidden group-hover:block cursor-pointer max-[500px]:block z-50'>
-            <BsChevronCompactRight onClick={nextSlide} size={isMobile? 30:80}/>
-          </div>
-          <div className='transition-all ease-in absolute  w-screen h-fit bottom-0 justify-center py-3 gap-4 cursor-pointer hidden group-hover:flex z-50 max-[500px]:flex'>
-            {
-              slideimg.map((slideimg,slideindex)=>(
-                <div key={slideindex}>
-                  {!(slideindex==currentIndex)? <BsSquare color='white' onClick={()=>goToSlide(slideindex)} />:<BsSquareFill  color='white'/>}
-                  
-                </div>
-              ))
-            }
-          </div>
         </div>
+        <CarouselPanel/>
         
       </div>
       <div className='w-screen h-fit bg-[#dadfe3] text-black'>
@@ -189,9 +159,9 @@ function App(){
                 <div className=' w-[full] h-[full]  flex items-center border-black  grow'  key={contntindex}>
                   <img src={`${companyicons[contntindex].url}`} ></img>
                 </div>
-                <div className='group-hover:flex hidden justify-center'>
-                 <p className='font-semibold'>{`${companyicons[contntindex].placed}`} <span className='font-light'>Placed</span> </p>
-                </div>
+                {/* <div className='group-hover:flex hidden justify-center'>
+                 <p className='font-semibold'>{`${companyicons[contntindex].information}`} <span className='font-light'>Placed</span> </p>
+                </div> */}
                 </div>
               ))
 
@@ -267,6 +237,7 @@ function App(){
     </>
   
   )
+
   return (jsxelement);
 }
 
