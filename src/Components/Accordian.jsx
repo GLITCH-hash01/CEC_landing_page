@@ -37,7 +37,7 @@ function Accordian(props){
             
             
             <div className={`${isActive? "h-fit p-4":"h-0"} bg-[#647fd6] duration-100 transition-all  w-full text-white`}>
-                <p>{Queries[props.indexnumber].Answer}</p>
+                <p className={`transition-all ${isActive?"flex":"hidden"}`}>{Queries[props.indexnumber].Answer}</p>
             </div> 
             
             
