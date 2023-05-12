@@ -17,7 +17,7 @@ function CourseSection(){
         })
         CouseVar[varid](true);
     }
-
+    
 
     const Courses=[
         {
@@ -56,7 +56,7 @@ function CourseSection(){
             Information:"The Department of Electrical Engineering was established in 2009, offering a 4-year B.Tech in Electrical and Electronics Engineering from APJ Abdul Kalam Technological University, Kerala with a current intake of 120 students. Our experienced faculty with Masters and Doctoral degrees from premier institutions provide personalized attention and institute-industry interactions to mold technically accomplished Electrical Engineers and Entrepreneurs. Our well-equipped laboratories and quality-oriented academic environment equip students with technical know-how, professionalism, and social values for their diversified career plans."
         }
     ];
-    console.log(Courses[0].getState())
+    
 
 return (
 <>
@@ -73,7 +73,7 @@ return (
 
             </div>
             </div>
-            <div className={` bg-blend-saturation z-0  flex-row shadow-inner shadow-black text-white bg-[#b21919] w-${item.getState()? "full":"0"} ${item.getState()? "lg:h-[200px] sm:h-[500px]":"h-0"} transition-all duration-150 self-center flex`}  >
+            <div className={` bg-blend-saturation z-0  flex-row shadow-inner shadow-black text-white bg-[#b21919] w-${item.getState()? "full":"0"} ${item.getState()? "lg:h-[200px] sm:h-[500px]":"h-0"} transition-all duration-300 self-center flex`}  >
                 <div className={`${item.getState()?" flex":"hidden"} transition-all   w-full justify-center my-7 text-center flex-col p-8`}>
 
                     <p className={`font-semibold text-lg p-2`}>{item.Name}</p>

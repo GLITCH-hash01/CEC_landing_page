@@ -1,7 +1,8 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import CarouselSlide from "./CarouselSlide";
 import { BsChevronCompactLeft, BsChevronCompactRight,BsSquare,BsSquareFill } from 'react-icons/bs';
 import {useMediaQuery} from 'react-responsive';
+import { useSwipeable } from "react-swipeable";
 
 
 function CarouselPanel(){
@@ -41,11 +42,15 @@ function CarouselPanel(){
     const goToSlide = (slideIndex) => {
       setslideindex(slideIndex);
     };
-    
+
+    const handlers=useSwipeable({
+      onSwipedLeft:()=>nextSlide(),
+      onSwipedRight:()=>prevSlide()
+    })
 
     const isMobile=useMediaQuery({query:'(max-width:600px)'})
     const jsxelement=(<>
-        <div className=" w-fit h-full relative group">
+        <div className=" w-fit h-full relative group "{...handlers}>
             <div className="h-full w-screen overflow-x-clip group">
                 <div className="h-full w-fit flex flex-row">
                     {
@@ -62,10 +67,10 @@ function CarouselPanel(){
 
                 </div>
             </div>
-            <div className='absolute w-fit h-fit text-white bottom-[50%] left-0 hidden group-hover:block cursor-pointer max-[500px]:block z-50'>
+            <div className='absolute w-fit h-fit text-white bottom-[50%] left-0 hidden group-hover:block cursor-pointer z-50'>
                 <BsChevronCompactLeft onClick={prevSlide} size={isMobile? 30:80} />
             </div>
-            <div className='absolute w-fit h-fit text-white bottom-[50%] right-0 hidden group-hover:block cursor-pointer max-[500px]:block z-50'>
+            <div className='absolute w-fit h-fit text-white bottom-[50%] right-0 hidden group-hover:block cursor-pointer  z-50'>
                 <BsChevronCompactRight onClick={nextSlide} size={isMobile? 30:80}/>
             </div>
             <div className='transition-all ease-in absolute  w-screen h-fit bottom-0 justify-center py-3 gap-4 cursor-pointer hidden group-hover:flex z-50 max-[500px]:flex'>
@@ -79,9 +84,10 @@ function CarouselPanel(){
                 }
             </div>
         </div>
-    
+
     
     </>);
+
     
     return(jsxelement);
 }

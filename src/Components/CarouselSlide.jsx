@@ -1,14 +1,22 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 
 
 function CarouselSlide(props){
-    const slide1translate=((window.innerWidth))
+
+    const [slide1translate,setcrntwidth]=useState(window.innerWidth)
+    
+    const [cstcss,setcss]=useState({
+      backgroundImage:`url(${props.url})`,
+      tranform:`translate(${props.currentslideindex*slide1translate}px)`
+  
+  })
+
     console.log("Current Index",props.currentslideindex)
     console.log("Index",props.index)
     const jsxelement=(
         
         <>
-        <div ley={props.index} className={'w-screen h-full bg-center bg-cover relative group transition-all duration-200 delay-150 '+((props.currentslideindex>=0)? `-translate-x-[${slide1translate*props.currentslideindex}px]`:"")} style={{backgroundImage:`url(${props.url})`}}>
+        <div ey={props.index} className={'w-screen h-full bg-center bg-cover relative group transition-all duration-500 delay-150 '} style={{backgroundImage:`url(${props.url})`,transform:`translate(-${props.currentslideindex*slide1translate}px)`}}>
             <div className='absolute bg-gradient-to-t from-black w-full h-full'></div>
                 <div className='h-full w-full flex flex-col-reverse'>
                     <div className='z-40 p-12'>
@@ -29,6 +37,7 @@ function CarouselSlide(props){
         </div>
         </>
     )
+    useEffect(()=>{setcrntwidth(window.innerWidth);console.log(slide1translate)})
     return jsxelement
 }
 
