@@ -1,5 +1,6 @@
-import React,{useDebugValue, useState} from 'react';
-import { BsChevronCompactLeft, BsChevronCompactRight,BsSquare,BsSquareFill,BsInstagram, BsLinkedin,BsFacebook } from 'react-icons/bs';
+import React,{ useState} from 'react';
+import { BsChevronCompactLeft, BsChevronCompactRight,BsSquare,BsSquareFill,BsInstagram,BsLinkedin,BsFacebook } from 'react-icons/bs';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {BiMap} from 'react-icons/bi'
 import CourseSection from './Components/Corsesection.jsx'
 import Accordian from './Components/Accordian.jsx';
@@ -7,6 +8,7 @@ import {AiFillMail, AiFillPhone} from 'react-icons/ai';
 import {useMediaQuery} from 'react-responsive';
 import PlacementGraph from './Components/Graph.jsx';
 import CarouselPanel from './Components/Carouselpanel.jsx';
+import ContactForm from './Components/Contact.jsx';
 
 
 
@@ -15,6 +17,8 @@ import CarouselPanel from './Components/Carouselpanel.jsx';
 
 
 function App(){
+
+  
   const slideimg=[
     {
       url:"/src/assets/slide-img-1.jpeg",
@@ -62,35 +66,19 @@ function App(){
   
 
   
-  const [currentIndex,setCurrentIndex]=useState(0);
   const isMobile=useMediaQuery({query:'(max-width:600px)'})
   const isRotatedMobileHeight=useMediaQuery({query:'(max-height:365px)'})
   const isRotatedMobiileWidth=useMediaQuery({query:'(max-width:885px)'});
+  const [ContactFormstatus,buttonactivator]=useState(false);
 
- 
-  const prevSlide=() =>{
-    const isFirstSlide=(currentIndex==0);
-    const newIndex=isFirstSlide? slideimg.length-1:currentIndex-1;
-    setCurrentIndex(newIndex)
-  }
-  
-  const nextSlide=() =>{
-    const isLastSlide=(currentIndex==slideimg.length-1);
-    const newIndex=isLastSlide? 0:currentIndex+1;
-    setCurrentIndex(newIndex)
-  }
 
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
-
-  console.log(isMobile)
   const jsxelement=(
     <>
       <link rel="preload" as='image' href="/src/assets/slide-img-2.png" />
-      <div className='w-screen h-screen flex flex-col grow overflow-clip'>
+      <div className='w-screen h-screen flex flex-col grow overflow-x-clip'>
+        
         <div className='w-screen h-[fit] flex flex-row shadow-lg '>
-          <img src={isMobile? "/src/assets/cec_logo_100.png":"/src/assets/cec_logo_300.png"} alt="logo" className='mr-[10px] max-[600px]:w-[100px] max-[600px]:h-[100px] h-[100px] w-[100px]' />
+          <img src={isMobile? "/src/assets/cec_logo_100.png":"/src/assets/cec_logo_300.png"} alt="logo" className='mr-[10px] max-[600px]:w-[100px] max-[600px]:h-[100px] h-[100px] w-[100px]'  />
           <div className='flex flex-col p2 font-bold text-2xl max-[600px]:p-0 '>
             <h1 className=' text-2xl max-[600px]:text-lg'>College of Engineering</h1>
             <h1 className=' text-2xl max-[600px]:text-lg'>Chengannur</h1>
@@ -117,9 +105,13 @@ function App(){
         
 
         </div>
-        <CarouselPanel/>
+        <CarouselPanel clickfunc={()=>{buttonactivator(true)}}/>
+
         
+         
       </div>
+      
+      
       <div className='w-screen h-fit bg-[#dadfe3] text-black'>
         <div className='w-screen h-fit flex justify-center place-items-center '>
           <div className='w-[95%] h-[95%] bg-white px-4 my-4'>
@@ -199,6 +191,7 @@ function App(){
             </div>
           </div>
         </div>
+        
       </div>
       <footer>
         <div className='w-screen h-[200px] flex items-center bg-[#b21919] justify-center text-white text-sm max-[600px]:h-fit '>
@@ -230,11 +223,12 @@ function App(){
             </div>
             </div>
           </div>
+          
         </div>
-
+           
       </footer>
 
-    </>
+    </> 
   
   )
 

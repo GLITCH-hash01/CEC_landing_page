@@ -13,7 +13,6 @@ function CourseSection(){
         const CouseVar=[stateCSEchanger,stateECEchanger,stateEEEchanger]
         CouseVar.map((item,itemindex)=>{
             item(false)
-            console.log(item)
         })
         CouseVar[varid](true);
     }

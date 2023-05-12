@@ -1,18 +1,11 @@
 import React,{useEffect, useState} from "react";
+import ContactForm from "./Contact";
 
 
 function CarouselSlide(props){
 
-    const [slide1translate,setcrntwidth]=useState(window.innerWidth)
-    
-    const [cstcss,setcss]=useState({
-      backgroundImage:`url(${props.url})`,
-      tranform:`translate(${props.currentslideindex*slide1translate}px)`
-  
-  })
-
-    console.log("Current Index",props.currentslideindex)
-    console.log("Index",props.index)
+    const [slide1translate,setcrntwidth]=useState(window.innerWidth);
+    const [butStatus,BtnTrigger]=useState(false);
     const jsxelement=(
         
         <>
@@ -28,16 +21,17 @@ function CarouselSlide(props){
 
                         </div>
                         <div className='h-full  w-[25%] justify-center flex max-[500px]:w-full'>{
-                          (props.ButtonName.length>0)? <button className='  w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full bg-[#b21919]'> {props.ButtonName}</button>: 0
+                          (props.ButtonName.length>0)? <button className='  w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full bg-[#b21919]' onClick={()=>{BtnTrigger(true)}}> {props.ButtonName}</button>: 0
                         }
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        {butStatus&& <ContactForm/>}               
         </>
     )
-    useEffect(()=>{setcrntwidth(window.innerWidth);console.log(slide1translate)})
+    useEffect(()=>{setcrntwidth(window.innerWidth);})
     return jsxelement
 }
 

@@ -5,7 +5,7 @@ import {useMediaQuery} from 'react-responsive';
 import { useSwipeable } from "react-swipeable";
 
 
-function CarouselPanel(){
+function CarouselPanel(props){
     const slideimg=[
         {
           url:"/src/assets/slide-img-1.jpeg",
@@ -48,11 +48,12 @@ function CarouselPanel(){
       onSwipedRight:()=>prevSlide()
     })
 
+
     const isMobile=useMediaQuery({query:'(max-width:600px)'})
     const jsxelement=(<>
         <div className=" w-fit h-full relative group "{...handlers}>
             <div className="h-full w-screen overflow-x-clip group">
-                <div className="h-full w-fit flex flex-row">
+                <div className="h-full w-fit flex flex-row overflow-auto">
                     {
                         slideimg.map((slidedata,slideindex)=>(
                             <CarouselSlide url={slideimg[slideindex].url}
@@ -60,6 +61,7 @@ function CarouselPanel(){
                                 Content={slideimg[0].Content}
                                 index={slideindex}
                                 currentslideindex={currentslideindex}
+                                functionclck={props.clickfunc}
                                 ButtonName={slideimg[slideindex].ButtonName}/>
                             
                         ))
@@ -67,13 +69,13 @@ function CarouselPanel(){
 
                 </div>
             </div>
-            <div className='absolute w-fit h-fit text-white bottom-[50%] left-0 hidden group-hover:block cursor-pointer z-50'>
+            <div className='absolute w-fit h-fit text-white bottom-[50%] left-0 hidden group-hover:block cursor-pointer z-40'>
                 <BsChevronCompactLeft onClick={prevSlide} size={isMobile? 30:80} />
             </div>
-            <div className='absolute w-fit h-fit text-white bottom-[50%] right-0 hidden group-hover:block cursor-pointer  z-50'>
+            <div className='absolute w-fit h-fit text-white bottom-[50%] right-0 hidden group-hover:block cursor-pointer  z-40'>
                 <BsChevronCompactRight onClick={nextSlide} size={isMobile? 30:80}/>
             </div>
-            <div className='transition-all ease-in absolute  w-screen h-fit bottom-0 justify-center py-3 gap-4 cursor-pointer hidden group-hover:flex z-50 max-[500px]:flex'>
+            <div className='transition-all ease-in absolute  w-screen h-fit bottom-0 justify-center py-3 gap-4 cursor-pointer hidden group-hover:flex z-40 max-[500px]:flex'>
                 {
                   slideimg.map((slideimg,slideindex)=>(
                     <div key={slideindex}>
