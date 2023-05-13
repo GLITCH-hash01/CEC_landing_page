@@ -5,9 +5,7 @@ export default {
 ],
   theme: {
     extend: {
-      backgroundImage:{
-        'CSE':'url(public/src/assets/Card_1.jpeg)'
-      }
+
     },
   },
   plugins: [],

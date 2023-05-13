@@ -1,9 +1,10 @@
 import React from "react";
-import {BarChart,Bar,Legend,Tooltip,CartesianGrid,XAxis,YAxis, Cell,ResponsiveContainer} from 'recharts';
+import {BarChart,Bar,Tooltip,XAxis} from 'recharts';
 
 
 function PlacementGraph(){
-    const datasheet=[{name:"Tata",value:25},{name:"TCS",value:23}]
+    
+    //Dataset
     const data = [
         {
           "name": "TCS Ninja",
@@ -171,34 +172,21 @@ function PlacementGraph(){
         }
       ]
     
-      const Barcolour=["#FFC107", "#FF9800", "#FF5722", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5", "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50", "#8BC34A", "#CDDC39", "#FFEB3B", "#FFCDD2", "#E57373", "#F06292", "#BA68C8", "#9575CD", "#7986CB", "#64B5F6", "#4FC3F7", "#4DD0E1", "#81C784", "#AED581", "#DCE775", "#FFF176", "#FFF59D", "#FFE082", "#FFB74D", "#FF8A65", "#F48FB1", "#CE93D8", "#B39DDB", "#90CAF9", "#80DEEA", "#A5D6A7"
-    ]
-
+    // Placement Graph
     const graphelement=(
     <>
     
     <BarChart width={600} height={200}  data={data}>
 
         <XAxis dataKey="name"  hide={true}/>
-        <Tooltip
-        itemStyle={{color:"#8c1515" }}
-        />
+        <Tooltip itemStyle={{color:"#8c1515" }}/>
         <Bar dataKey="placed" fill={'#5472d2'} barSize={500}>
-        {/* {
-            data.map((entry,index)=>(
-                <Cell key={`cell-${index}`} fill={Barcolour[index%20]}/>
-
-            ))
-        } */}
         </Bar>
         
-
     </BarChart>
-    
-    
-    
-    </>
-        );
+
+    </>);
+
     return graphelement;
 }
 

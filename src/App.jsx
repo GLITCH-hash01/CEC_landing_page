@@ -8,9 +8,13 @@ import {useMediaQuery} from 'react-responsive';
 import PlacementGraph from './Components/Graph.jsx';
 import { useSwipeable } from "react-swipeable";
 import { AiFillCloseCircle } from "react-icons/ai";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 
 function App(){
+  AOS.init();
   // Objext
   const companyicons=[
     {
@@ -59,15 +63,12 @@ function App(){
 
   // Media Queries
   const isMobile=useMediaQuery({query:'(max-width:600px)'})
-  const isRotatedMobileHeight=useMediaQuery({query:'(max-height:365px)'})
-  const isRotatedMobiileWidth=useMediaQuery({query:'(max-width:885px)'});
 
   // Variables
   const [Donemsg,DonePrompt]=useState(false)
   const [currentslideindex,setslideindex]=useState(0);
   const [slide1translate,setcrntwidth]=useState(window.innerWidth);
   const [ContactStatus,BtnTrigger]=useState(false);
-  const [visible,setVisible]=useState(false)
 
   //Functions
   const prevSlide=() =>{
@@ -91,21 +92,27 @@ function App(){
     onSwipedRight:()=>prevSlide()
   })
   
-  const toggleVisible=()=>{
-    const scrolled=document.documentElement.scrollTop;
-    if (scrolled>300){
-      setVisible(true)
-    }
-    else if(scrolled<=300){
-      setVisible(false )
-    }
-  }
-
   const scrollToTop=()=>{
     window.scrollTo({
       top:0,
       behavior:'smooth'
     })
+  }
+
+  const scrollToBottom=()=>{
+    window.scrollTo({
+      top:'100%',
+      behavior:'smooth'
+    })
+  }
+  function disableScroll(){
+
+    scrollToTop()
+    document.body.style.overflow="hidden"
+  }
+
+  function enableScroll() {
+    document.body.style.overflow=""
   }
 
   //HTML Code
@@ -159,7 +166,7 @@ function App(){
                           {((slideimg[slideindex].Content.length>0))&&<p className='max-[500px]:h-[150px] overflow-auto max-[500px]:bg-gradient-to-t max-[500px]: from-black w-full text-ellipsis'>{slideimg[slideindex].Content}</p>}
                       </div>
                       <div className='h-full  w-[25%] justify-center flex max-[500px]:w-full'>{
-                        (slideimg[slideindex].ButtonName.length>0)? <button className='  w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full bg-[#b21919]' onClick={()=>{BtnTrigger(true)}}> {slideimg[slideindex].ButtonName}</button>: 0
+                        (slideimg[slideindex].ButtonName.length>0)? <button className='  w-[200px] h-[50px] text-white place-self-center hover:bg-white hover:text-black max-[500px]:w-full bg-[#b21919]' onClick={()=>{BtnTrigger(true);disableScroll()}}> {slideimg[slideindex].ButtonName}</button>: 0
                           }
                       </div>
                     </div>
@@ -198,13 +205,13 @@ function App(){
           <div className='w-[95%] h-[95%] bg-white px-4 my-4'>
 
             {/* Courses */}
-            <div className='my-8'>
+            <div className='my-8 ' data-aos="fade-in" >
               <h1 className='text-5xl p-3 font-semibold flex justify-center w-full'>Courses</h1>
               <CourseSection/>
             </div>
 
             {/* Placements */}
-            <div className='my-14'>
+            <div className='my-14' data-aos="fade-in" >
               <h1 className='text-5xl p-3 font-semibold w-full flex justify-center'>Placements</h1>
             
               <div className='flex overflow-auto lg:justify-center md:justify-center'>
@@ -224,16 +231,16 @@ function App(){
                   <p>STUDENTS PLACED</p>
                 </div>
             </div>
+
             <p  className='text-3xl font-semibold w-full flex justify-center max-[600px]:text-4xl max-[600px]:my-11 '>Our Top Recruiters</p>
-            <div className='flex flex-wrap gap-3 justify-center min-[1400px]:place-content-center min-[1400px]:h-[250px]'>{
+            <div className='flex flex-wrap gap-3 justify-center min-[1400px]:place-content-center min-[1400px]:h-[250px]' >
+              {
+
               companyicons.map((contntitem,contntindex)=>(
-              <div className='group  duration-100 delay-75 flex flex-col place-content-center  cursor-pointer hover:shadow-xl hover:scale-125 hover:bg-white'>
+              <div className='group  duration-100 delay-75 flex flex-col place-content-center  cursor-pointer hover:shadow-xl hover:scale-125 hover:bg-white' >
                 <div className=' w-[full] h-[full]  flex items-center border-black  grow'  key={contntindex}>
                   <img src={`${companyicons[contntindex].url}`} ></img>
                 </div>
-                {/* <div className='group-hover:flex hidden justify-center'>
-                 <p className='font-semibold'>{`${companyicons[contntindex].information}`} <span className='font-light'>Placed</span> </p>
-                </div> */}
                 </div>
               ))
 
@@ -243,7 +250,7 @@ function App(){
             </div>
 
             {/* FAQ's*/}
-            <div className='mt-32'>
+            <div className='mt-32' data-aos="fade-in" id="FAQ">
               <h1 className='text-5xl p-3 font-semibold w-full flex justify-center'>FAQ's</h1>
               <div className=' justify-center py-10 flex flex-col gap-2 w-full items-center'>
                 <Accordian indexnumber={0}/>
@@ -258,7 +265,7 @@ function App(){
 
       {/* Footer */}
       <footer>
-        <div className='w-screen h-[200px] flex items-center bg-[#b21919] justify-center text-white text-sm max-[600px]:h-fit '>
+        <div className='w-screen h-[200px] flex-col flex items-center bg-[#b21919] justify-center text-white text-sm max-[600px]:h-fit '>
           <div className='flex flex-row w-fit gap-10 max-[600px]:flex-col max-[600px]:m-3'>
             <div className='flex flex-row '>
               <div className='p-1'><BiMap/></div> 
@@ -281,24 +288,27 @@ function App(){
               <div className='flex flex-row'>
                 <div className='p-1'><AiFillMail/></div>
                 <p>principal@ceconline.edu</p>
+                
               </div>
               <div className='h-fit w-fit max-[600px]:justify-center flex max-[600px]:w-full'>
                 <img src="./src/assets/CEC-logo-white.png" alt=""  className=' h-[100px] w-[100px]'/>
               </div>
             </div>
           </div>
+          <p>Site Developed by Harikrishna A</p>
+          
         </div>
       </footer>
 
       {/* Contact Us Page */}
       {ContactStatus&&
-      <div className=" absolute w-screen h-full bg-black bg-opacity-20 z-50">
+      <div className=" absolute w-screen h-full bg-black bg-opacity-20 z-50" >
         <div className=" w-full h-screen absolute flex justify-center place-items-center z-40">
-          <div className="w-[500px] h-[650px] bg-[#dadfe3] border rounded-lg  border-black  flex flex-col  max-[600px]:h-screen max-[600px]:w-screen realtive">
-            <form className="w-full h-full  flex flex-col relative overflow-hidden">
+          <div className="w-[500px] h-[650px] bg-[#dadfe3] border rounded-lg  border-black  flex flex-col  max-[600px]:h-screen max-[600px]:w-screen realtive" data-aos="slide-down">
+            <form className="w-full h-full  flex flex-col relative overflow-hidden" action='javascript:void(0)'>
                 <div className="flex flex-row bg-[#b21919] items-center pr-4">
                 <h1 className="text-3xl p-4 max-[600px]:text-4xl text-white grow">Contact Us</h1>
-                <AiFillCloseCircle size={25} color="#dadfe3" className="cursor-pointer" onClick={()=>(BtnTrigger(false))} />
+                <AiFillCloseCircle size={25} color="#dadfe3" className="cursor-pointer" onClick={()=>{BtnTrigger(false);enableScroll()}} />
                 </div>
                 <div className="px-4 flex flex-col py-2">
                 <label className="max-[600px]:text-2xl">Name</label>
@@ -308,23 +318,24 @@ function App(){
                 <label className="max-[600px]:text-2xl">Queries</label>
                 <textarea name="" id="" cols="30" rows="10" className="border-[#5472d2] border rounded"></textarea>
                 <div className="flex justify-center  grow ">
-                <button className="w-[90%] h-[50px]  bg-[#b21919] text-white text-xl hover:bg-[#ae3535] my-6 rounded-lg">Contact Us</button>
+                <button className="w-[90%] h-[50px]  bg-[#b21919] text-white text-xl hover:bg-[#ae3535] my-6 rounded-lg" onClick={()=>{DonePrompt(true)}}>Contact Us</button>
                 </div>
                 </div>
-                <div className="absolute w-full h-[50px] bg-[#b21919] transition-all duration-300 -bottom-20 flex items-center text-white px-3"><p>Invalid Phone number</p></div>
+                
             </form>
           </div>
         </div>
 
         {/* Contact Us Done Msg */}
         {Donemsg&&
-        <div className='w-full h-screen absolute z-50 flex justify-center place-items-center'>
+        <div className='w-full h-screen absolute z-50 flex justify-center place-items-center' data-aos="fade-in">
           <div className='bg-[#dadfe3] w-[300px] h-[200px] border border-black rounded-lg flex flex-col'>
             <div className='flex flex-col justify-center'>
               <p className='text-center text-xl py-5'>We will get to you as soon as possible</p>
               <div className='flex flex-col gap-2 justify-center place-items-center'>
-                <button className='w-[150px] text-white h-[25px] bg-[#b21919] rounded-lg hover:bg-[#af4646]' onClick={()=>{BtnTrigger(false)}}>OK</button>
-                <button className='w-[150px] text-white h-[25px] bg-[#b21919] rounded-lg hover:bg-[#af4646]'>FAQ's</button>
+                <button className='w-[150px] text-white h-[25px] bg-[#b21919] rounded-lg hover:bg-[#af4646]' onClick={()=>{BtnTrigger(false);DonePrompt(false);enableScroll()}}>OK</button>
+                <AnchorLink href='#FAQ'><button className='w-[150px] text-white h-[25px] bg-[#b21919] rounded-lg hover:bg-[#af4646]' onClick={()=>{BtnTrigger(false);DonePrompt(false);enableScroll();scrollToBottom()}}>FAQ's</button></AnchorLink>
+                <a className='w-[150px] text-white h-[25px] bg-[#b21919] rounded-lg hover:bg-[#af4646] text-center' href='https://ceconline.edu/'>Website</a>
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 
 function Accordian(props){
     
-
+    //Objects Dataset
     const Queries=[
         {
             Question:"What are the distances to the near transists?",
@@ -24,23 +24,25 @@ function Accordian(props){
     ]
 
     
-
+    //Variables
     const [isActive,setCurrentState]=useState();
+
+    //HTML CODE
     return(
         <>
         <div className='flex flex-col h-fit items-center w-[900px] max-[1020px]:w-full'>
+            {/* Closed State */}
             <div className='flex flex-row px-2 bg-[#5472d2]  h-[50px] text-white cursor-pointer  w-full' onClick={()=> setCurrentState(!isActive)}>
                 <p className='self-center grow max-[600px]:w-[80%] max-[600px]:grow-0'>{Queries[props.indexnumber].Question}</p>
                 <div className='hidden max-[600px]:grow max-[600px]:flex '></div>
                 <p className={'self-center text-3xl duration-300  '+(isActive? 'rotate-45':'')}  >+</p>
             </div>
             
-            
+            {/* OpenState */}
             <div className={`${isActive? "h-fit p-4":"h-0"} bg-[#647fd6] duration-100 transition-all  w-full text-white`}>
                 <p className={`transition-all ${isActive?"flex":"hidden"}`}>{Queries[props.indexnumber].Answer}</p>
             </div> 
-            
-            
+
         </div>
         </>
     );
